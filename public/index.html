@@ -17,20 +17,102 @@
     </header>
 
     <main>
-        <div id = "taskList">
-            <!-- Tasks will be inserted here dynamically with JS code -->
-        </div>
+        <!-- || Item List Component || -->
+        <section>
+            <ul id="itemlist">
+                 <!-- Items will be inserted here dynamically with JS code -->
+        </section>
+
+        <!-- || Edit Item Form Component || -->
+        <section id="edit-form-section" style="display: none;">
+            <form id="editform">
+                <h2>Edit Item</h2>
+
+                <!-- Item Category -->
+                <div class="form-row">
+                    <label for="editItemType">Category</label>
+                    <select id="editItemType" name="editItemType" required="true">
+                        <option value="" class="fa">&#xf2bb; Select Category</option>
+                        <option value="Gaming" class="fa">&#xf2bb; Gaming</option>
+                        <option value="Press Media" class="fa">&#xf2bb; Press Media</option>
+                        <option value="Radio & Podcast" class="fa">&#xf2bb; Radio & Podcast</option>
+                        <option value="Social Media" class="fa">&#xf2bb; Social Media</option>
+                        <option value="Others" class="fa">&#xf2bb; Others</option>
+                    </select>
+                </div>
+
+                <!-- Item Name Row -->
+                <div class="form-row">
+                    <label for="editItemName">Item Name</label>
+                    <input type="text" name="editItemName" id="editItemName" required="true"/>
+                </div>
+
+                <!-- Item Consumption Time -->
+                <div class="form-row">
+                    <label for="editItemTime">Consumed Time</label>
+                    <input type="number" name="editItemTime" id="editItemTime" required="true"/>
+                </div>
+
+                <!-- Item Goal -->
+                <div class="form-row">
+                    <label for="editItemGoal">Set your Daily Goal</label>
+                    <input type="text" name="editItemGoal" id="editItemGoal" required="true"/>
+                </div>
+
+                <!-- Button -->
+                <div class="form-row">
+                    <input type="submit">
+                </div>
+            </form>
+        </section>
+
+
+        <!-- || Item Form Component || -->
+        <section>
+            <form id="itemform">
+                <h2>Add Item</h2>
+
+                <!-- Item Category -->
+                <div class="form-row">
+                    <label for="itemType">Category</label>
+                    <select id="itemType" name="itemType" required="true">
+                        <option value="" class="fa">&#xf2bb; Select Category</option>
+                        <option value="Gaming" class="fa">&#xf2bb; Gaming</option>
+                        <option value="Press Media" class="fa">&#xf2bb; Press Media</option>
+                        <option value="Radio & Podcast" class="fa">&#xf2bb; Radio & Podcast</option>
+                        <option value="Social Media" class="fa">&#xf2bb; Social Media</option>
+                        <option value="Others" class="fa">&#xf2bb; Others</option>
+                    </select>
+                </div>
+
+                <!-- Item Name Row -->
+                <div class="form-row">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" name="itemName" id="itemName" required="true"/>
+                </div>
+
+                <!-- Item Consumption Time -->
+                <div class="form-row">
+                    <label for="itemTime">Consumed Time</label>
+                    <input type="number" name="itemTime" id="itemTime" required="true"/>
+                </div>
+
+                <!-- Item Goal -->
+                <div class="form-row">
+                    <label for="itemGoal">Set your Daily Goal</label>
+                    <input type="text" name="itemGoal" id="itemGoal" required="true"/>
+                </div>
+
+                <!-- Button -->
+                <div class="form-row">
+                    <input type="submit">
+                </div>
+            </form>
+        </section>
     </main>
 
-    <footer>
-        <button id = "addTask">Add</button>
-        <!-- Pop-up Button -->
-        <div id = "taskForm" style = "display:none">
-            <input type="text" id="taskNameInput" placeholder="Task Name">
-            <input type="text" id="taskCategoryInput" placeholder="Task Category">
-        </div>
-    </footer>
-
+    <!-- Link to the JavaScript -->
+    <script src="js/main.js" type="module"></script>
 </body>
 
 </html>
