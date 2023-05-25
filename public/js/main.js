@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const closeAddFormButton = document.querySelector('#closeAddFormButton');
     const closeEditFormButton = document.querySelector('#closeEditFormButton');
 
+    console.log('Data from localStorage:', data);
+    populateList(data, itemList);
+
     let currentItemIndex;  // to keep track of which item is being edited
 
     // Function to add new item
@@ -35,18 +38,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
         data.push(item);
         updateData();
         form.style.display = 'none';  // Hide the form after submission
-        addItemButton.style.display = 'block';  // Show the add item button after form submission
-        closeAddFormButton.style.display = 'block';  // Show the close button after form submission
+        addItemButton.style.display = 'block';  // Show the "Add Item" button after form submission
+        addItemButton.disabled = false;  // Re-enable the add item button after form submission
         this.reset();
     }
 
     function updateData() {
         localStorage.setItem('list', JSON.stringify(data));
         populateList(data, itemList);
+        console.log('Data updated and populated:', data); // Add this line
     }
 
     // Function to display items
     function populateList(items = [], itemList) {
+        console.log('Populating list with:', items);
         itemList.innerHTML = items.map((item, i) => {
             return `
                 <li>
@@ -76,8 +81,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Edit item event
     function editItem(e) {
         if (!e.target.classList.contains('edit')) {
+            
             return;
         }
+
+        // If the Add Item Form is open, return and don't open the Edit Form
+        if (addFormSection.style.display === 'block') {
+            return;
+        }
+
         currentItemIndex = e.target.dataset.index;
         document.querySelector('#editItemName').value = data[currentItemIndex].name;
         document.querySelector('#editItemType').value = data[currentItemIndex].type;
@@ -89,6 +101,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         editFormSection.style.display = 'block';  // show the edit form
         addItemButton.style.display = 'none';  // hide the add item button when edit form is open
     }
+
 
     // handle edit form submission
     function submitEdit(e) {
@@ -109,32 +122,44 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // toggle visibility of add item form
     function toggleAddItemForm() {
         if (form.style.display === 'none') {
+            // If the Edit Form is open, return and don't open the Add Item Form
+            if (editFormSection.style.display === 'block') {
+                return;
+            }
+
             form.style.display = 'block';
-            closeAddFormButton.style.display = 'block';  // Show the close button
+            addItemButton.disabled = true;
         }
-    }
+}
+
 
     // hide add item form
     function hideAddItemForm() {
-        form.style.display = 'none';
-        addItemButton.style.display = 'block';
+        addFormSection.style.display = 'none';
+        addItemButton.style.display = 'block';  // show the "Add Item" button when the form is hidden
     }
 
     // hide edit item form
     function hideEditItemForm() {
         editFormSection.style.display = 'none';
-        addItemButton.style.display = 'block';
+        addItemButton.style.display = 'block';  // show the "Add Item" button when the form is hidden
     }
 
     // Add an event listener to the Add Item Button. When it's clicked, show the Add Item Form
     addItemButton.addEventListener('click', function() {
         addFormSection.style.display = 'block';
+        addItemButton.style.display = 'none'; // hide the "Add Item" button when the form is shown
     });
+    
 
     // Add an event listener to the Close button in Add Item Form. When it's clicked, hide the Add Item Form
     closeAddFormBtn.addEventListener('click', function() {
         addFormSection.style.display = 'none';
+        addItemButton.disabled = false; // re-enable the "Add Item" button when the form is closed
     });
+
+    // Add an event listener to the Close button in Add Item Form. When it's clicked, hide the Add Item Form
+    closeAddFormBtn.addEventListener('click', hideAddItemForm);
 
     // Add event listeners
     form.addEventListener('submit', addItem);
@@ -142,8 +167,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     itemList.addEventListener('click', editItem);
     editForm.addEventListener('submit', submitEdit);
     addItemButton.addEventListener('click', toggleAddItemForm);
-    closeAddFormButton.addEventListener('click', hideAddItemForm);
-    closeEditFormButton.addEventListener('click', hideEditItemForm);
     closeAddFormButton.addEventListener('click', hideAddItemForm);
     closeEditFormButton.addEventListener('click', hideEditItemForm);
 
@@ -154,6 +177,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     form.style.display = 'none';
     editFormSection.style.display = 'none';
 
-    // Update data on page load to show the existing items
-    updateData();
+    // Populate the list on page load to show the existing items
+    populateList(data, itemList);
 });

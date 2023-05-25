@@ -1,0 +1,146 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body */
+body {
+    background: #F4F5F7;
+    color: #172B4D;
+}
+
+/* Header */
+header {
+    background: #0052CC;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+/* Main */
+main {
+    margin: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+}
+
+/* Item List */
+#itemlist {
+    list-style-type: none;
+}
+
+#itemlist li {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #D6DADC;
+    border-radius: 5px;
+}
+
+#itemlist .item-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#itemlist .item-name,
+#itemlist .item-time,
+#itemlist .item-goal {
+    margin: 10px 0;
+}
+
+#itemlist button {
+    background: #0052CC;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#itemlist button:hover {
+    background: #0065FF;
+}
+
+/* Forms */
+form {
+    margin: 20px 0;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    margin-bottom: 10px;
+}
+
+.form-row input[type="text"],
+.form-row select {
+    padding: 10px;
+    border: 1px solid #D6DADC;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.form-row input[type="number"] {
+    padding: 10px;
+    border: 1px solid #D6DADC;
+    border-radius: 5px;
+    width: calc(100% / 3 - 10px);
+    margin-right: 10px;
+}
+
+.form-row input[type="submit"] {
+    background: #0052CC;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-row input[type="submit"]:hover {
+    background: #0065FF;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin: 20px 0;
+}
+
+footer button {
+    background: #0052CC;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+footer button:hover {
+    background: #0065FF;
+}
+
+/* Media Queries */
+@media screen and (min-width: 768px) {
+    .form-row {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .form-row input[type="number"] {
+        width: auto;
+        margin-right: 5px;
+    }
+
+    form {
+        margin-left: 20px;
+    }
+}
