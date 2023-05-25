@@ -17,14 +17,17 @@
     </header>
 
     <main>
+
         <!-- || Item List Component || -->
         <section>
             <ul id="itemlist">
-                 <!-- Items will be inserted here dynamically with JS code -->
+                <!-- Items will be inserted here dynamically with JS code -->
+            </ul>
         </section>
 
         <!-- || Edit Item Form Component || -->
         <section id="edit-form-section" style="display: none;">
+            <button id="closeEditFormBtn">Close</button>
             <form id="editform">
                 <h2>Edit Item</h2>
 
@@ -32,12 +35,12 @@
                 <div class="form-row">
                     <label for="editItemType">Category</label>
                     <select id="editItemType" name="editItemType" required="true">
-                        <option value="" class="fa">&#xf2bb; Select Category</option>
-                        <option value="Gaming" class="fa">&#xf2bb; Gaming</option>
-                        <option value="Press Media" class="fa">&#xf2bb; Press Media</option>
-                        <option value="Radio & Podcast" class="fa">&#xf2bb; Radio & Podcast</option>
-                        <option value="Social Media" class="fa">&#xf2bb; Social Media</option>
-                        <option value="Others" class="fa">&#xf2bb; Others</option>
+                        <option value="">Select Category</option>
+                        <option value="Gaming">&#xf2bb;Gaming</option>
+                        <option value="Press Media">&#xf2bb;Press Media</option>
+                        <option value="Radio & Podcast">&#xf2bb;Radio & Podcast</option>
+                        <option value="Social Media">&#xf2bb;Social Media</option>
+                        <option value="Others">&#xf2bb;Others</option>
                     </select>
                 </div>
 
@@ -50,25 +53,28 @@
                 <!-- Item Consumption Time -->
                 <div class="form-row">
                     <label for="editItemTime">Consumed Time</label>
-                    <input type="number" name="editItemTime" id="editItemTime" required="true"/>
+                    <input type="number" name="editItemHour" id="editItemHour" min="0" required="true"/> Hour(s)
+                    <input type="number" name="editItemMinute" id="editItemMinute" min="0" max="59" required="true"/> Minute(s)
+                    <input type="number" name="editItemSecond" id="editItemSecond" min="0" max="59" required="true"/> Second(s)
                 </div>
 
                 <!-- Item Goal -->
                 <div class="form-row">
-                    <label for="editItemGoal">Set your Daily Goal</label>
+                    <label for="editItemGoal">Daily Goal</label>
                     <input type="text" name="editItemGoal" id="editItemGoal" required="true"/>
                 </div>
 
                 <!-- Button -->
                 <div class="form-row">
                     <input type="submit">
+                    <button id="closeEditFormBtn">Close</button>
                 </div>
             </form>
         </section>
 
-
-        <!-- || Item Form Component || -->
-        <section>
+        <!-- || Add Item Form Component || -->
+        <section id="add-form-section" style="display: none;">
+            <button id="closeAddFormBtn">Close</button>
             <form id="itemform">
                 <h2>Add Item</h2>
 
@@ -76,12 +82,12 @@
                 <div class="form-row">
                     <label for="itemType">Category</label>
                     <select id="itemType" name="itemType" required="true">
-                        <option value="" class="fa">&#xf2bb; Select Category</option>
-                        <option value="Gaming" class="fa">&#xf2bb; Gaming</option>
-                        <option value="Press Media" class="fa">&#xf2bb; Press Media</option>
-                        <option value="Radio & Podcast" class="fa">&#xf2bb; Radio & Podcast</option>
-                        <option value="Social Media" class="fa">&#xf2bb; Social Media</option>
-                        <option value="Others" class="fa">&#xf2bb; Others</option>
+                        <option value="">Select Category</option>
+                        <option value="Gaming">&#xf2bb;Gaming</option>
+                        <option value="Press Media">&#xf2bb;Press Media</option>
+                        <option value="Radio & Podcast">&#xf2bb;Radio & Podcast</option>
+                        <option value="Social Media">&#xf2bb;Social Media</option>
+                        <option value="Others">&#xf2bb;Others</option>
                     </select>
                 </div>
 
@@ -94,24 +100,31 @@
                 <!-- Item Consumption Time -->
                 <div class="form-row">
                     <label for="itemTime">Consumed Time</label>
-                    <input type="number" name="itemTime" id="itemTime" required="true"/>
+                    <input type="number" name="itemHour" id="itemHour" min="0" required="true"/> Hour(s)
+                    <input type="number" name="itemMinute" id="itemMinute" min="0" max="59" required="true"/> Minute(s)
+                    <input type="number" name="itemSecond" id="itemSecond" min="0" max="59" required="true"/> Second(s)
                 </div>
 
                 <!-- Item Goal -->
                 <div class="form-row">
-                    <label for="itemGoal">Set your Daily Goal</label>
+                    <label for="itemGoal">Daily Goal</label>
                     <input type="text" name="itemGoal" id="itemGoal" required="true"/>
                 </div>
 
                 <!-- Button -->
                 <div class="form-row">
                     <input type="submit">
+                    <button id="closeAddFormBtn">Close</button>
                 </div>
             </form>
         </section>
+
+        <!-- Add Item Button -->
+        <button id="addItemButton">Add Item</button>
+
     </main>
 
-    <!-- Link to the JavaScript -->
+    <!-- Link to the JS script file -->
     <script src="js/main.js" type="module"></script>
 </body>
 
