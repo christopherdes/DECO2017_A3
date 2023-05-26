@@ -22,7 +22,8 @@ header {
 
 /* Main */
 main {
-    margin: 20px;
+    margin: auto;
+    max-width: 800px;
     padding: 20px;
     background: white;
     border-radius: 5px;
@@ -43,6 +44,14 @@ main {
 #itemlist .item-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.item-header button {
+    background: transparent;
+    border: 1px solid #0052CC;
+    color: #0052CC;
+    margin-left: 10px;
 }
 
 #itemlist .item-name,
@@ -58,6 +67,7 @@ main {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    
 }
 
 #itemlist button:hover {
@@ -73,10 +83,12 @@ form {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    
 }
 
 .form-row label {
     margin-bottom: 10px;
+    margin-right: 20px;
 }
 
 .form-row input[type="text"],
@@ -144,3 +156,41 @@ footer button:hover {
         margin-left: 20px;
     }
 }
+
+#add-form-section,
+#edit-form-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+}
+
+#itemform,
+#editform {
+    background: #fff;
+    padding: 20px;
+    max-width: 500px;
+    margin: auto;
+}
+
+#closeEditFormBtn,
+#closeAddFormBtn {
+    background: transparent;
+    border: 1px solid #0052CC;
+    color: #0052CC;
+}
+
+#add-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+#addItemBtn {
+    margin: 20px 0; /* adjust this as needed */
+}
+
