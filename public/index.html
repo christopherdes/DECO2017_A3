@@ -13,10 +13,12 @@
 
 <body>
     <header id="header">
-        <img id="headerImg" src="image/default.jpg" alt="header image">
+        <img id="headerImg" src="image/banner.jpg" alt="header image">
     </header>
 
     <main>
+
+        <h1>Media Consumption Tracker</h1>
 
         <!-- || Item List Component || -->
         <section>
@@ -63,9 +65,9 @@
                     <input type="text" name="editItemGoal" id="editItemGoal" required="true"/>
                 </div>
 
-                <!-- Item Banner -->
                 <div class="form-row">
-                    <input type="file" id="editItemImage">
+                    <label for="editItemFile">File:</label>
+                    <input type="file" id="editItemFile" accept=".png, .jpg, .jpeg, .pdf">
                 </div>
 
                 <!-- Button -->
@@ -114,9 +116,9 @@
                     <input type="text" name="itemGoal" id="itemGoal" required="true"/>
                 </div>
 
-                <!-- Item Banner -->
                 <div class="form-row">
-                    <input type="file" id="itemImage">
+                    <label for="itemFile">File:</label>
+                    <input type="file" id="itemFile" accept=".png, .jpg, .jpeg, .pdf">
                 </div>
 
                 <!-- Button -->
@@ -134,8 +136,8 @@
     </footer>
 
     <!-- Link to the JS script file -->
-    <script src="js/script.js" type="modue"></script>
     <script src="js/main.js" type="module"></script>
+    <script src="js/upload.js" type="module"></script>
 </body>
 
 </html>

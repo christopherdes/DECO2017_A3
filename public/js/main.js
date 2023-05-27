@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Object to store data
     let data = JSON.parse(localStorage.getItem('list')) || [];
 
     const itemList = document.querySelector('#itemlist');
@@ -15,11 +14,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     console.log('Data from localStorage:', data);
     populateList(data, itemList);
 
-    let currentItemIndex;  // to keep track of which item is being edited
+    let currentItemIndex;
 
-    // Function to add new item
     function addItem(e) {
         e.preventDefault();
+    
         const name = document.querySelector('#itemName').value;
         const type = document.querySelector('#itemType').value;
         const hours = document.querySelector('#itemHour').value;
@@ -27,30 +26,40 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const seconds = document.querySelector('#itemSecond').value;
         const time = `${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
         const goal = document.querySelector('#itemGoal').value;
-
-        const item = {
-            name,
-            type,
-            time,
-            goal
-        };
-
-        data.push(item);
-        updateData();
-
-        addFormSection.style.display = 'none';  // Hide the form after submission
-        addItemButton.style.display = 'block';  // Show the "Add Item" button after form submission
-        addItemButton.disabled = True;  // Re-enable the add item button after form submission
-        this.reset();
+    
+        const fileInput = document.querySelector('#itemFile');
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+        reader.onloadend = function() {
+            const item = {
+                name,
+                type,
+                time,
+                goal,
+                file: reader.result,
+                fileName: file ? file.name : "No File",
+            };
+            data.push(item);
+            updateData();
+    
+            addFormSection.style.display = 'none';
+            addItemButton.style.display = 'block';
+            form.reset();
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            reader.onloadend();
+        }
     }
+    
 
     function updateData() {
         localStorage.setItem('list', JSON.stringify(data));
         populateList(data, itemList);
-        console.log('Data updated and populated:', data); // Add this line
+        console.log('Data updated and populated:', data);
     }
 
-    // Function to display items
     function populateList(items = [], itemList) {
         console.log('Populating list with:', items);
         itemList.innerHTML = items.map((item, i) => {
@@ -60,19 +69,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         <button class="edit" data-index=${i}>Edit</button>
                         <button class="delete" data-index=${i}>Delete</button>
                     </div>
-
                     <div class="item-body">
                         <div class="item-type"><span>Category:</span> ${item.type}</div>
                         <div class="item-name"><span>Item Name:</span> ${item.name}</div>
                         <div class="item-time"><span>Consumed Time:</span> ${item.time}</div>
                         <div class="item-goal"><span>Daily Goal:</span> ${item.goal}</div>
+                        <div class="item-file"><span>File:</span> <a href="${item.file}" target="_blank">${item.fileName}</a></div>
                     </div>
                 </li>
             `;
         }).join('');
     }
 
-    // Function to delete item
     function deleteItem(e) {
         if (!e.target.classList.contains('delete')) {
             return;
@@ -82,96 +90,86 @@ document.addEventListener('DOMContentLoaded', (event) => {
         updateData();
     }
 
-    // Edit item event
     function editItem(e) {
         if (!e.target.classList.contains('edit')) {
-            
             return;
         }
 
-        // If the Add Item Form is open, return and don't open the Edit Form
-        if (addFormSection.style.display === 'block') {
-            return;
-        }
+        const index = e.target.dataset.index;
+        currentItemIndex = index;
 
-        currentItemIndex = e.target.dataset.index;
-        document.querySelector('#editItemName').value = data[currentItemIndex].name;
-        document.querySelector('#editItemType').value = data[currentItemIndex].type;
-        const timeParts = data[currentItemIndex].time.split(' ');
-        document.querySelector('#editItemHour').value = timeParts[0];
-        document.querySelector('#editItemMinute').value = timeParts[2];
-        document.querySelector('#editItemSecond').value = timeParts[4];
-        document.querySelector('#editItemGoal').value = data[currentItemIndex].goal;
-        editFormSection.style.display = 'block';  // Save for the "Edit Form" later
-        addItemButton.style.display = 'none';  // hide the add item button when edit form is open
+        const currentItem = data[index];
+
+        document.querySelector('#editItemName').value = currentItem.name;
+        document.querySelector('#editItemType').value = currentItem.type;
+        document.querySelector('#editItemHour').value = currentItem.time.split(' ')[0];
+        document.querySelector('#editItemMinute').value = currentItem.time.split(' ')[2];
+        document.querySelector('#editItemSecond').value = currentItem.time.split(' ')[4];
+        document.querySelector('#editItemGoal').value = currentItem.goal;
+
+        document.querySelector('#editItemFile').value = '';
+
+        addFormSection.style.display = 'none';
+        addItemButton.style.display = 'none';
+        editFormSection.style.display = 'block';
     }
 
-
-    // handle edit form submission
     function submitEdit(e) {
         e.preventDefault();
-        data[currentItemIndex].name = document.querySelector('#editItemName').value;
-        data[currentItemIndex].type = document.querySelector('#editItemType').value;
+
+        const name = document.querySelector('#editItemName').value;
+        const type = document.querySelector('#editItemType').value;
         const hours = document.querySelector('#editItemHour').value;
         const minutes = document.querySelector('#editItemMinute').value;
         const seconds = document.querySelector('#editItemSecond').value;
-        data[currentItemIndex].time = `${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
-        data[currentItemIndex].goal = document.querySelector('#editItemGoal').value;
-        updateData();
-        editFormSection.style.display = 'none';  // hide the edit form
-        addItemButton.style.display = 'block';  // Show the add item button after form submission
-        closeEditFormButton.style.display = 'block';  // Show the close button after form submission
-    }
+        const time = `${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+        const goal = document.querySelector('#editItemGoal').value;
 
-    // toggle visibility of add item form
-    function toggleAddItemForm() {
-        if (form.style.display === 'none') {
-            // If the Edit Form is open, return and don't open the Add Item Form
-            if (editFormSection.style.display === 'block') {
-                return;
-            }
+        const fileInput = document.querySelector('#editItemFile');
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+        reader.onloadend = function() {
+            data[currentItemIndex].name = name;
+            data[currentItemIndex].type = type;
+            data[currentItemIndex].time = time;
+            data[currentItemIndex].goal = goal;
+            data[currentItemIndex].file = reader.result;
+            data[currentItemIndex].fileName = file ? file.name : "No File";
+            updateData();
 
-            form.style.display = 'block';
-            addItemButton.disabled = true;
+            editFormSection.style.display = 'none';
+            addItemButton.style.display = 'block';
+            editForm.reset();
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            reader.onloadend();
         }
     }
 
-    // hide add item form
-    function hideAddItemForm() {
-        addFormSection.style.display = 'none';
-        addItemButton.style.display = 'block';  // show the "Add Item" button when the form is hidden
-    }
-
-    // hide edit item form
-    function hideEditItemForm() {
-        editFormSection.style.display = 'none';
-        addItemButton.style.display = 'block';  // show the "Add Item" button when the form is hidden
-    }
-
-    // Add an event listener to the Add Item Button. When it's clicked, show the Add Item Form
-    addItemButton.addEventListener('click', function() {
+    function openAddForm() {
         addFormSection.style.display = 'block';
-        addItemButton.style.display = 'none'; // hide the "Add Item" button when the form is shown
-    });
-    
+        addItemButton.style.display = 'none';
+    }
 
-    // Add an event listener to the Close button in Add Item Form. When it's clicked, hide the Add Item Form
-    closeAddFormBtn.addEventListener('click', function() {
+    function closeAddForm() {
         addFormSection.style.display = 'none';
-        addItemButton.disabled = false; // re-enable the "Add Item" button when the form is closed
-    });
+        addItemButton.style.display = 'block';
+    }
 
-    // Add an event listener to the Close button in Add Item Form. When it's clicked, hide the Add Item Form
-    closeAddFormBtn.addEventListener('click', hideAddItemForm);
+    function closeEditForm() {
+        editFormSection.style.display = 'none';
+        addItemButton.style.display = 'block';
+    }
 
-    // Add event listeners
     form.addEventListener('submit', addItem);
+    editForm.addEventListener('submit', submitEdit);
     itemList.addEventListener('click', deleteItem);
     itemList.addEventListener('click', editItem);
-    editForm.addEventListener('submit', submitEdit);
-    addItemButton.addEventListener('click', toggleAddItemForm);
-    closeAddFormButton.addEventListener('click', hideAddItemForm);
-    closeEditFormButton.addEventListener('click', hideEditItemForm);
+    addItemButton.addEventListener('click', openAddForm);
+    closeAddFormBtn.addEventListener('click', closeAddForm);
+    closeEditFormButton.addEventListener('click', closeEditForm);
 
     // Initialize the list
     populateList(data, itemList);
