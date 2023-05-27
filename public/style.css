@@ -16,12 +16,6 @@ body {
     color: #172B4D;
 }
 
-/* header */
-/* header {
-    background: #0052CC;
-    padding: 20px;
-} */
-
 
 /* Main Section */
 main {
@@ -117,10 +111,11 @@ main {
 
 .form-row input[type="text"],
 .form-row select {
-    padding: 10px;
-    border: 1px solid #D6DADC;
-    border-radius: 5px;
     width: 100%;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .form-row input[type="number"] {
@@ -201,12 +196,12 @@ h1 {
 /* Banner */
 #header {
     position: relative;
-    height: 60px;
+    height: 100px;
     overflow: hidden;
 }
 
 #headerImg {
-    height: 60px;
+    height: 100px;
     width: 100%;
     object-fit: cover;
 }
@@ -223,3 +218,12 @@ h1 {
 
 
 
+/* Filter */
+.filter {
+    font-size: 16px;
+    padding: 10px;
+    margin: 20px 0;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}

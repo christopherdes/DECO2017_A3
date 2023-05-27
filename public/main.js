@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Object to store data
     let data = JSON.parse(localStorage.getItem('list')) || [];
 
     const itemList = document.querySelector('#itemlist');
@@ -11,6 +10,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const editForm = document.querySelector('#editform');
     const closeAddFormButton = document.querySelector('#closeAddFormButton');
     const closeEditFormButton = document.querySelector('#closeEditFormButton');
+
+    // Add the filter category here
+    const categoryFilter = document.querySelector('#categoryFilter');
+    categoryFilter.addEventListener('change', () => {
+        populateList(data, itemList);
+    });
 
     console.log('Data from localStorage:', data);
     populateList(data, itemList);
@@ -52,24 +57,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Function to display items
     function populateList(items = [], itemList) {
         console.log('Populating list with:', items);
-        itemList.innerHTML = items.map((item, i) => {
-            return `
-                <li>
-                    <div class="item-header">
-                        <button class="edit" data-index=${i}>Edit</button>
-                        <button class="delete" data-index=${i}>Delete</button>
-                    </div>
-
-                    <div class="item-body">
-                        <div class="item-type"><span>Category:</span> ${item.type}</div>
-                        <div class="item-name"><span>Item Name:</span> ${item.name}</div>
-                        <div class="item-time"><span>Consumed Time:</span> ${item.time}</div>
-                        <div class="item-goal"><span>Daily Goal:</span> ${item.goal}</div>
-                    </div>
-                </li>
-            `;
-        }).join('');
+        console.log('Selected category:', categoryFilter.value);  // let's add a log here
+        itemList.innerHTML = items
+            .filter(item => {
+                console.log('Item type:', item.type);  // and here
+                return categoryFilter.value ? item.type === categoryFilter.value : true
+            })
+            .map((item, i) => {
+                return `
+                    <li>
+                        <div class="item-header">
+                            <button class="edit" data-index=${i}>Edit</button>
+                            <button class="delete" data-index=${i}>Delete</button>
+                        </div>
+    
+                        <div class="item-body">
+                            <div class="item-type"><span>Category:</span> ${item.type}</div>
+                            <div class="item-name"><span>Item Name:</span> ${item.name}</div>
+                            <div class="item-time"><span>Consumed Time:</span> ${item.time}</div>
+                            <div class="item-goal"><span>Daily Goal:</span> ${item.goal}</div>
+                        </div>
+                    </li>
+                `;
+            }).join('');
     }
+    
 
     // Function to delete item
     function deleteItem(e) {
@@ -184,3 +196,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Populate the list on page load to show the existing items
     populateList(data, itemList);
 });
+
