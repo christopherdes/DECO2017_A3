@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <header>
-        <h1>Media Consumption Tracker</h1>
+    <header id="header">
+        <img id="headerImg" src="image/default.jpg" alt="header image">
     </header>
 
     <main>
@@ -27,20 +27,19 @@
 
         <!-- || Edit Item Form Component || -->
         <section id="edit-form-section" style="display: none;">
-            <button id="closeEditFormBtn">Close</button>
+  
             <form id="editform">
                 <h2>Edit Item</h2>
-
                 <!-- Item Category -->
                 <div class="form-row">
                     <label for="editItemType">Category</label>
                     <select id="editItemType" name="editItemType" required="true">
                         <option value="">Select Category</option>
-                        <option value="Gaming">&#xf2bb;Gaming</option>
-                        <option value="Press Media">&#xf2bb;Press Media</option>
-                        <option value="Radio & Podcast">&#xf2bb;Radio & Podcast</option>
-                        <option value="Social Media">&#xf2bb;Social Media</option>
-                        <option value="Others">&#xf2bb;Others</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Press Media">Press Media</option>
+                        <option value="Radio & Podcast">Radio & Podcast</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
 
@@ -52,16 +51,21 @@
 
                 <!-- Item Consumption Time -->
                 <div class="form-row">
-                    <label for="editItemTime">Consumed Time</label>
-                    <input type="number" name="editItemHour" id="editItemHour" min="0" required="true"/> Hour(s)
-                    <input type="number" name="editItemMinute" id="editItemMinute" min="0" max="59" required="true"/> Minute(s)
-                    <input type="number" name="editItemSecond" id="editItemSecond" min="0" max="59" required="true"/> Second(s)
+                    <label for="editItemTime">Item Time</label>
+                    <input type="number" name="editItemHour" id="editItemHour" min="0" required="false"/> Hour
+                    <input type="number" name="editItemMinute" id="editItemMinute" min="0" max="59" required="false"/> Minute
+                    <input type="number" name="editItemSecond" id="editItemSecond" min="0" max="59" required="false"/> Second
                 </div>
 
                 <!-- Item Goal -->
                 <div class="form-row">
                     <label for="editItemGoal">Daily Goal</label>
                     <input type="text" name="editItemGoal" id="editItemGoal" required="true"/>
+                </div>
+
+                <!-- Item Banner -->
+                <div class="form-row">
+                    <input type="file" id="editItemImage">
                 </div>
 
                 <!-- Button -->
@@ -77,17 +81,16 @@
            
             <form id="itemform">
                 <h2>Add Item</h2>
-
                 <!-- Item Category -->
                 <div class="form-row">
                     <label for="itemType">Category</label>
                     <select id="itemType" name="itemType" required="true">
                         <option value="">Select Category</option>
-                        <option value="Gaming">&#xf2bb;Gaming</option>
-                        <option value="Press Media">&#xf2bb;Press Media</option>
-                        <option value="Radio & Podcast">&#xf2bb;Radio & Podcast</option>
-                        <option value="Social Media">&#xf2bb;Social Media</option>
-                        <option value="Others">&#xf2bb;Others</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Press Media">Press Media</option>
+                        <option value="Radio & Podcast">Radio & Podcast</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
 
@@ -99,16 +102,21 @@
 
                 <!-- Item Consumption Time -->
                 <div class="form-row">
-                    <label for="itemTime">Consumed Time</label>
-                    <input type="number" name="itemHour" id="itemHour" min="0" required="true"/> Hour(s)
-                    <input type="number" name="itemMinute" id="itemMinute" min="0" max="60" required="true"/> Minute(s)
-                    <input type="number" name="itemSecond" id="itemSecond" min="0" max="60" required="true"/> Second(s)
+                    <label for="itemTime">Item Time</label>
+                    <input type="number" name="itemHour" id="itemHour" min="0" required="false"/> Hour
+                    <input type="number" name="itemMinute" id="itemMinute" min="0" max="59" required="false"/> Minute
+                    <input type="number" name="itemSecond" id="itemSecond" min="0" max="59" required="false"/> Second
                 </div>
 
                 <!-- Item Goal -->
                 <div class="form-row">
                     <label for="itemGoal">Daily Goal</label>
                     <input type="text" name="itemGoal" id="itemGoal" required="true"/>
+                </div>
+
+                <!-- Item Banner -->
+                <div class="form-row">
+                    <input type="file" id="itemImage">
                 </div>
 
                 <!-- Button -->
@@ -126,6 +134,7 @@
     </footer>
 
     <!-- Link to the JS script file -->
+    <script src="js/script.js" type="modue"></script>
     <script src="js/main.js" type="module"></script>
 </body>
 

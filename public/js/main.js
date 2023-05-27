@@ -37,9 +37,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         data.push(item);
         updateData();
-        form.style.display = 'none';  // Hide the form after submission
+
+        addFormSection.style.display = 'none';  // Hide the form after submission
         addItemButton.style.display = 'block';  // Show the "Add Item" button after form submission
-        addItemButton.disabled = false;  // Re-enable the add item button after form submission
+        addItemButton.disabled = True;  // Re-enable the add item button after form submission
         this.reset();
     }
 
@@ -56,13 +57,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
             return `
                 <li>
                     <div class="item-header">
-                        <span class="item-type">${item.type}</span>
                         <button class="edit" data-index=${i}>Edit</button>
                         <button class="delete" data-index=${i}>Delete</button>
                     </div>
-                    <div class="item-name">${item.name}</div>
-                    <div class="item-time">Consumed Time: ${item.time}</div>
-                    <div class="item-goal">Daily Goal: ${item.goal}</div>
+
+                    <div class="item-body">
+                        <div class="item-type"><span>Category:</span> ${item.type}</div>
+                        <div class="item-name"><span>Item Name:</span> ${item.name}</div>
+                        <div class="item-time"><span>Consumed Time:</span> ${item.time}</div>
+                        <div class="item-goal"><span>Daily Goal:</span> ${item.goal}</div>
+                    </div>
                 </li>
             `;
         }).join('');
@@ -98,7 +102,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.querySelector('#editItemMinute').value = timeParts[2];
         document.querySelector('#editItemSecond').value = timeParts[4];
         document.querySelector('#editItemGoal').value = data[currentItemIndex].goal;
-        editFormSection.style.display = 'block';  // show the edit form
+        editFormSection.style.display = 'block';  // Save for the "Edit Form" later
         addItemButton.style.display = 'none';  // hide the add item button when edit form is open
     }
 
@@ -130,8 +134,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             form.style.display = 'block';
             addItemButton.disabled = true;
         }
-}
-
+    }
 
     // hide add item form
     function hideAddItemForm() {
