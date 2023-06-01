@@ -1,4 +1,5 @@
 /* Reset */
+/* Applies general styles to reset default styles for all elements */
 * {
     margin: 0;
     padding: 0;
@@ -11,13 +12,14 @@ h2 {
 }
 
 /* Body and Header */
+/* Applies styles to the <body> element and header elements */
 body {
     background: #F4F5F7;
     color: #172B4D;
 }
 
-
 /* Main Section */
+/* Styles for the main section of the page */
 main {
     margin: auto;
     max-width: 800px;
@@ -27,6 +29,7 @@ main {
 }
 
 /* Item List */
+/* Styles for the item list */
 #itemlist {
     list-style-type: none;
 }
@@ -68,13 +71,11 @@ main {
     cursor: pointer;
 }
 
-
 #closeEditFormBtn:hover,
 #closeAddFormBtn:hover {
     background: #DFE1E6;
     color: 0052CC;
 }
-
 
 #itemlist .item-name,
 #itemlist .item-time,
@@ -96,7 +97,7 @@ main {
 }
 
 /* Forms */
-
+/* Styles for forms */
 .form-row {
     align-items: center;
     display: flex;
@@ -107,7 +108,6 @@ main {
     margin-bottom: 10px;
     margin-right: 20px;
 }
-
 
 .form-row input[type="text"],
 .form-row select {
@@ -143,7 +143,7 @@ main {
 }
 
 /* Footer */
-
+/* Styles for the footer */
 footer {
     margin: auto;
     margin-top: 2em;
@@ -165,8 +165,8 @@ footer button:hover {
     background: #0065FF;
 }
 
-
 /* Pop-up Form */
+/* Styles for pop-up forms */
 #add-form-section,
 #edit-form-section {
     position: fixed;
@@ -192,8 +192,8 @@ h1 {
     font-size: 24px;
 }
 
-
 /* Banner */
+/* Styles for the banner/header section */
 #header {
     position: relative;
     height: 100px;
@@ -216,9 +216,8 @@ h1 {
     background: rgba(0, 0, 255, 0.2); /* Adjust the blue overlay here */
 }
 
-
-
 /* Filter */
+/* Styles for filters */
 .filter {
     font-size: 16px;
     padding: 10px;

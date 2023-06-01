@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     let data = JSON.parse(localStorage.getItem('list')) || [];
-
     const itemList = document.querySelector('#itemlist');
     const form = document.querySelector('#itemform');
     const addItemButton = document.querySelector('#addItemButton');
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const seconds = document.querySelector('#itemSecond').value;
         const time = `${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
         const goal = document.querySelector('#itemGoal').value;
-
         const item = {
             name,
             type,
@@ -118,7 +116,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         editFormSection.style.display = 'block';  // Save for the "Edit Form" later
         addItemButton.style.display = 'none';  // hide the add item button when edit form is open
     }
-
 
     // handle edit form submission
     function submitEdit(e) {

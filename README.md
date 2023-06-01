@@ -14,14 +14,10 @@ To deploy the application, users are required to download files from GitHub whic
 
 Detailed setup instructions are as follows:
 
-1. Download: Retrieve the application files from the GitHub repository.
+1. Download: Retrieve the application files from the GitHub repository and Using the VS Code terminal, run the following command in the root directory (npm install express).
 2. Install: Navigate to the project directory and run 'npm install' command in the terminal.
 3. Run Test: Execute the 'npm run test' command in the terminal to run the application locally.
-
-The following set-up is from DECO2017 - Advaned Web Design by Rob Dongas
-1. Using the VS Code terminal, run the following command in the root directory (npm install express)
-2. Run your server using the command (node server.js)
-3. Run the code with (npm run start)
+4. Run your server using the command (node server.js / npm run start) 
 
 ## Reflection and Future Consideration
 Key takeaways from the development process include recognising the importance of early consideration of technical feasibility in the design stage. This approach significantly reduces the magnitude of changes needed due to technical complexities during the development phase. The use of Git for version control emerged as a best practice, providing a reliable platform for tracking changes, ensuring project consistency, and facilitating collaboration.
