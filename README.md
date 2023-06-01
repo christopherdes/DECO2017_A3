@@ -7,7 +7,7 @@ The initial phase involved sketching the web page layout, which later matured in
 
 
 ## Design Iterations and Improvement
-Throughout the project, substantial enhancements and iterations were made. The inclusion of data visualization and filter functionality was reevaluated due to project complexity, which directed the focus towards creating an intuitive tracker feature experience. This pivot led to a change in the design patterns on the item tracker card, with the three-dot pattern being replaced by 'edit' and 'delete' icons, simplifying user interaction and reducing technical complexity. Based on user feedback, the character limit was removed to enable users to freely name their media consumption activity. The timer feature was replaced with user input and the filter bar was transformed into a drop-down filter, which further simplified user interaction.
+Throughout the project, substantial enhancements and iterations were made. The inclusion of data visualisation and filter functionality was reevaluated due to project complexity, which directed the focus towards creating an intuitive tracker feature experience. This pivot led to a change in the design patterns on the item tracker card, with the three-dot pattern being replaced by 'edit' and 'delete' icons, simplifying user interaction and reducing technical complexity. Based on user feedback, the character limit was removed to enable users to freely name their media consumption activity. The timer feature was replaced with user input and the filter bar was transformed into a drop-down filter, which further simplified user interaction.
 
 ## Application Configuration and Deployment Procedures
 To deploy the application, users are required to download files from GitHub which include the 'node_modules' folder, '.gitignore', 'package.json', 'package-lock.json', and 'server.js'. After this, 'npm run test' should be executed in the local environment at http://localhost:8888/.
@@ -18,9 +18,21 @@ Detailed setup instructions are as follows:
 2. Install: Navigate to the project directory and run 'npm install' command in the terminal.
 3. Run Test: Execute the 'npm run test' command in the terminal to run the application locally.
 
+The following set-up is from DECO2017 - Advaned Web Design by Rob Dongas
+1. Using the VS Code terminal, run the following command in the root directory (npm install express)
+2. Run your server using the command (node server.js)
+3. Run the code with (npm run start)
+
 ## Reflection and Future Consideration
-Key takeaways from the development process include recognizing the importance of early consideration of technical feasibility in the design stage. This approach significantly reduces the magnitude of changes needed due to technical complexities during the development phase. The use of Git for version control emerged as a best practice, providing a reliable platform for tracking changes, ensuring project consistency, and facilitating collaboration.
+Key takeaways from the development process include recognising the importance of early consideration of technical feasibility in the design stage. This approach significantly reduces the magnitude of changes needed due to technical complexities during the development phase. The use of Git for version control emerged as a best practice, providing a reliable platform for tracking changes, ensuring project consistency, and facilitating collaboration.
 
-In addition, it was recognized that responsive design is vital to delivering a consistent experience across diverse devices. Bootstrap was identified as a useful tool in this regard. As a designer, understanding the development process greatly improved communication with developers.
+In addition, it was recognised that responsive design is vital to delivering a consistent experience across diverse devices. Bootstrap was identified as a useful tool in this regard. As a designer, understanding the development process greatly improved communication with developers.
 
-Looking ahead, the React framework with Firebase has been identified as an exciting area for exploration to enhance scalability and maximize impact. Possible feature enhancements include user time tracking and data entry, which could augment user experience by catering to diverse preferences. Regular usability testing will ensure the product remains intuitive and accessible, and segmenting JS code into separate files may improve scalability with the addition of new features.
+Looking ahead, the React framework with Firebase has been identified as an exciting area for exploration to enhance scalability and maximise impact. Possible feature enhancements include user time tracking and data entry, which could augment user experience by catering to diverse preferences. Regular usability testing will ensure the product remains intuitive and accessible, and segmenting JS code into separate files may improve scalability with the addition of new features.
+
+## Reference and Resources
+- Doe, T. (2023, March 10). ttntm/itrack. Retrieved from GitHub website: https://github.com/ttntm/itrack
+- Eschweiler, S. (2018, May 18). Pure JavaScript — Building A Real-World Application From Scratch. Retrieved from Medium website: https://medium.com/codingthesmartway-com-blog/pure-javascript-building-a-real-world-application-from-scratch-5213591cfcd6
+- Morsa, A. (2023, April 20). ramblingadam/magic-task-timer. Retrieved from GitHub website: https://github.com/ramblingadam/magic-task-timer
+- Node.js Tutorial. (2019). Retrieved from W3schools.com website: https://www.w3schools.com/nodejs/
+- Poopongpanit, B. (2020, January 4). How to Create a Simple Web App Using JavaScript. Retrieved from Medium website: https://levelup.gitconnected.com/how-to-create-a-simple-web-app-using-javascript-d27b28459fad?gi=64ec024a627d
