@@ -20,11 +20,11 @@ Detailed setup instructions are as follows:
 4. Run your server using the command (node server.js / npm run start) 
 
 ## Reflection and Future Consideration
-Key takeaways from the development process include recognising the importance of early consideration of technical feasibility in the design stage. This approach significantly reduces the magnitude of changes needed due to technical complexities during the development phase. The use of Git for version control emerged as a best practice, providing a reliable platform for tracking changes, ensuring project consistency, and facilitating collaboration.
+Key takeaways from the development process include recognising the importance of early consideration of technical feasibility in the design stage. This approach significantly reduces the magnitude of changes needed due to technical complexities during the development phase. The use of Git for version control emerged as a best practice, providing a reliable platform for tracking changes and ensuring project consistency.
 
-In addition, it was recognised that responsive design is vital to delivering a consistent experience across diverse devices. Bootstrap was identified as a useful tool in this regard. As a designer, understanding the development process greatly improved communication with developers.
+In addition, it was recognised that responsive design is vital to delivering a consistent experience across diverse devices. Bootstrap was identified as a useful tool in this regard. As a designer, understanding the development process greatly improved communication with developers in my future carrer.
 
-Looking ahead, the React framework with Firebase has been identified as an exciting area for exploration to enhance scalability and maximise impact. Possible feature enhancements include user time tracking and data entry, which could augment user experience by catering to diverse preferences. Regular usability testing will ensure the product remains intuitive and accessible, and segmenting JS code into separate files may improve scalability with the addition of new features.
+Looking ahead, the React framework with Firebase has been identified as an exciting area for exploration to enhance scalability and maximise impact. Possible feature enhancements include user time tracking with data entry, which could augment user experience by catering to diverse preferences. Regular usability testing will ensure the product remains intuitive and accessible, and segmenting JS code into separate files may improve scalability with the addition of new features.
 
 ## Reference and Resources
 - Doe, T. (2023, March 10). ttntm/itrack. Retrieved from GitHub website: https://github.com/ttntm/itrack
